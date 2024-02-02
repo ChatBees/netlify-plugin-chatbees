@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    //"module": "ES2022",
+    "module": "ES6",
+    "moduleResolution": "node",
+    "strict": true,
+    "rootDir": "."
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

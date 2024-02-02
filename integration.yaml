@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://sdk.netlify.com/sdk/config-schema.json
+config:
+  slug: netlify-plugin-chatbees
+  name: netlify-plugin-chatbees
+  description: Build
+  integrationLevel: site
+  scopes:
+    site: ["read"]
+    user: ["read", "read"]

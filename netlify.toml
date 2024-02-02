@@ -1,19 +1,19 @@
-##############################
-# Netlify configuration file #
-##############################
-
-# List of Build plugins
-[[plugins]]
-# Use the current plugin in builds for testing and debugging.
-# Local path to the plugin.
-package = "."
-  # Plugin configuration
-  #  [plugins.inputs]
-  #  foo = "bar"
-
 [build]
-# Dummy build command
-command = "echo onBuild"
+command="netlify-integration build -a"
+publish=".ntli/site/static"
 
-[build.environment]
-NODE_VERSION = "14.14.0"
+[functions]
+directory=".ntli/site/netlify/functions"
+node_bundler = "esbuild"
+
+[[headers]]
+for="/ui/*"
+[headers.values]
+Access-Control-Allow-Origin="*"
+Access-Control-Allow-Headers="*"
+Access-Control-Allow-Methods="*"
+
+[dev]
+autoLaunch = false
+functions = ".ntli/site/netlify/functions"
+publish = ".ntli/site/static"

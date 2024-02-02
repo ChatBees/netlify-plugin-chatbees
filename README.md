@@ -1,81 +1,37 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/79deda3b-d696-4878-b15d-d9f3a862bdfc/deploy-status)](https://app.netlify.com/sites/build-plugin-template/deploys)
+# ChatBees plugin for Netlify
 
-Template repository to create new Netlify Build plugins.
+**Add a personalized AI assistant to your website in seconds**
 
-The main Build plugins documentation can be found
-[here](https://docs.netlify.com/configure-builds/build-plugins/).
+You can check our our sample site [before](https://65bbd0916a9bd103ba1694dc--transcendent-quokka-d0500e.netlify.app/) and [after](https://transcendent-quokka-d0500e.netlify.app/) installing ChatBees
 
-# Initialization
+The [ChatBees](https://www.chatbees.ai) plugin seamlessly integrates an AI assistant into your website. This assistant is trained using your website's content, requiring no additional configuration. Simply install the plugin and redeploy your website to activate this feature.
 
-To create a repository with a new Netlify Build plugin, click on the
-["Use this template" button](https://github.com/netlify/build-plugin-template/generate)
-on top of the page.
 
-The repository name should start with `netlify-plugin-`, for example
-`netlify-plugin-gatsby`.
+<img src="https://i.postimg.cc/7L63gYXg/Screenshot-2024-01-31-at-11-00-23-PM.png" alt="drawing" width="800"/>
 
-[Clone the repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
-locally.
 
-Inside the new repository directory, run the following command.
+## How does it work?
+ChatBees executes two functions when your website is deployed:
 
+1. ChatBees generates a personalized AI assistant that is integrated into your website
+2. ChatBees scans your website content to train the AI assistant, ensuring it is knowledgeable about the information presented on your site.
+   
+Additionally, with each deployment, ChatBees updates your AI assistant to reflect the most current content available on your site.
+
+## Installation 
+We're working on getting ChatBees plugin listed on Netlify to simplify the installation process. 
+Meanwhile, please follow [File-based installation](https://docs.netlify.com/integrations/build-plugins/#configure-settings) and add the following configuration to your ```netlify.toml``` 
 ```
-npm run init
-```
-
-Some questions will be asked. Make sure the plugin's name matches the repository
-name.
-
-Among other things, this will replace this `README.md` with the plugin's user
-documentation. Development documentation will still be available in the
-[`CONTRIBUTING.md`](/CONTRIBUTING.md#development-tasks).
-
-Finally, create a Netlify Site with the repository. This will automatically run
-your Build plugins in Netlify Build on every `git push`, as a smoke test.
-
-You can also add a
-[Netlify status badge](https://docs.netlify.com/monitor-sites/status-badges/).
-
-# Usage
-
-The plugin's logic should be added to [`./src/index.js`](/src/index.js).
-Comments in that file will guide you through the creation of a Build plugin.
-
-## Development tasks
-
-The following development tasks are available. Please check the
-[`package.json`](/package.json) `scripts` property for more information.
-
-```bash
-npm run build
+[[plugins]]
+  package = "netlify-plugin-chatbees"
 ```
 
-Runs a Netlify Build locally with the current plugin. This can be used for
-debugging and manual tests.
+Then update your ```package.json``` to include ```netlify-plugin-chatbees``` dependency, run ```npm install -D netlify-plugin-chatbees``` or ```yarn add -D netlify-plugin-chatbees```.
 
-The local Build configuration file is [`netlify.toml`](/netlify.toml) and can be
-modified.
 
-```bash
-npm run ava
-```
+## Pricing
+ChatBees plugin is currently **FREE** to try (up to 200 unique URLs/pages per website) while we work out the details.Please contact us at build@chatbees.ai if your website contains more than 200 pages.
 
-Runs [unit tests](/test/index.js).
 
-```bash
-npm run lint
-```
-
-Lints and prettifies source files.
-
-```bash
-npm test
-```
-
-Runs both unit tests and linting.
-
-```bash
-npm run release
-```
-
-Publishes this plugin to `npm`.
+## Changelog
+```Feb 2nd 2024``` v0.5 released
