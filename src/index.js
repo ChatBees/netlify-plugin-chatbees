@@ -5,12 +5,12 @@ module.exports = {
    onBuild : async ({ constants, utils }) => {
       const siteId = process.env.SITE_ID;
       const apiKey = process.env.CHATBEES_API_KEY ?? 'MDEtNjQxYjA1NTUtOGIzZC0zMjRkLTUzMTItOTg0ZjRhYjNjODI0';
-      const accountName = process.env.CHATBEES_ACCOUNT_NAME ?? 'public'
+      const accountId = process.env.CHATBEES_ACCOUNT_ID ?? 'public'
       const namespaceName = process.env.CHATBEES_NAMESPACE_NAME ?? 'public'
       const collectionName = process.env.CHATBEES_COLLECTION_NAME ?? 'netlify_'.concat(siteId);
       const logPrefix = '[ChatBees]'
 
-      const createCollection = `https://${accountName}.us-west-2.aws.chatbees.ai/collections/create`;
+      const createCollection = `https://${accountId}.us-west-2.aws.chatbees.ai/collections/create`;
       const createCollectionRequest = JSON.stringify({
          "namespace_name": namespaceName,
          "collection_name": collectionName,
@@ -65,7 +65,7 @@ module.exports = {
           <div class="chatbees-user-input-area">
                     <textarea id="chatbeesUserInput" placeholder="Type your message..."></textarea>
                     <!-- Please replace the chatbeesAccountID and chatbeesCollectionName with your account id and collection name. -->
-                    <input type="hidden" id="chatbeesAccountID" value=${accountName}>
+                    <input type="hidden" id="chatbeesAccountID" value=${accountId}>
                     <input type="hidden" id="chatbeesNamespaceName" value="${namespaceName}">
                     <input type="hidden" id="chatbeesCollectionName" value="${collectionName}">
                     <img src="https://www.chatbees.ai/chatbees_send_icon.svg" alt="Send" class="chatbees-send-icon" onclick="chatbeesSendMessage()">
@@ -95,13 +95,13 @@ module.exports = {
       const rootUrl = process.env.URL;
       const siteId = process.env.SITE_ID;
       const apiKey = process.env.CHATBEES_API_KEY ?? 'MDEtNjQxYjA1NTUtOGIzZC0zMjRkLTUzMTItOTg0ZjRhYjNjODI0';
-      const accountName = process.env.CHATBEES_ACCOUNT_NAME ?? 'public'
+      const accountId = process.env.CHATBEES_ACCOUNT_ID ?? 'public'
       const namespaceName = process.env.CHATBEES_NAMESPACE_NAME ?? 'public'
       const collectionName = process.env.CHATBEES_COLLECTION_NAME ?? 'netlify_'.concat(siteId);
       const logPrefix = '[ChatBees]'
             
       // Create a new crawl
-      const createCrawl = `https://${accountName}.us-west-2.aws.chatbees.ai/docs/create_crawl`;
+      const createCrawl = `https://${accountId}.us-west-2.aws.chatbees.ai/docs/create_crawl`;
       const createCrawlRequest = JSON.stringify({
          "namespace_name": namespaceName,
          "collection_name": collectionName,
@@ -133,7 +133,7 @@ module.exports = {
         return;
       });
 
-      const getCrawl = `https://${accountName}.us-west-2.aws.chatbees.ai/docs/get_crawl`;
+      const getCrawl = `https://${accountId}.us-west-2.aws.chatbees.ai/docs/get_crawl`;
       let crawlCompleted = false;
       let timeout = 100;
 
@@ -185,7 +185,7 @@ module.exports = {
       }
 
       // Delete crawl
-      const deleteCrawl = `https://${accountName}.us-west-2.aws.chatbees.ai/docs/delete_crawl`;
+      const deleteCrawl = `https://${accountId}.us-west-2.aws.chatbees.ai/docs/delete_crawl`;
       const deleteRequest = JSON.stringify({namespace_name: namespaceName, collection_name: collectionName, root_url: rootUrl});
       await fetch(deleteCrawl, {
         method: 'POST',
@@ -210,7 +210,7 @@ module.exports = {
         return;
       });
 
-      const indexCrawl = `https://${accountName}.us-west-2.aws.chatbees.ai/docs/index_crawl`;
+      const indexCrawl = `https://${accountId}.us-west-2.aws.chatbees.ai/docs/index_crawl`;
       await fetch(indexCrawl, {
         method: 'POST',
         headers: {
